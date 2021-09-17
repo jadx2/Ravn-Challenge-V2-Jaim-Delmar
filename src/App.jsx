@@ -1,3 +1,11 @@
-const App = () => <h1>StarWars App</h1>;
+import Header from './components/Header';
+import Sidebar from './containers/Sidebar';
+
+const App = () => (
+  <>
+    <Header />
+    <Sidebar />
+  </>
+);
 
 export default App;
