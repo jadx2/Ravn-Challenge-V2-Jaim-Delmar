@@ -1,33 +1,18 @@
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+import allPeopleQuery from '../client/queries';
 import CharacterBtn from '../components/CharacterBtn';
 
 const Sidebar = () => {
-  const allPeople = gql`
-    query {
-      allPeople {
-        edges {
-          node {
-            name
-            homeworld {
-              name
-            }
-            species {
-              name
-            }
-          }
-        }
-      }
-    }
-  `;
+  const { loading, error, data } = useQuery(allPeopleQuery());
 
-  const { loading, error, data } = useQuery(allPeople);
+  if (loading) return <p>Loding...</p>;
+  if (error) return <p>{error.message}</p>;
 
-  if (loading) console.log('loading...');
-  if (error) console.log(error);
+  const allPeople = data.allPeople.edges;
 
   return (
     <ul>
-      {data.allPeople.edges.map((person) => (
+      {allPeople.map((person) => (
         <CharacterBtn key={person.node.id} name={person.node.name} />
       ))}
     </ul>
