@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-const getAllPeople = () => gql`
+const GET_ALL_PEOPLE = gql`
   query ($first: Int, $cursor: String) {
     allPeople(first: $first, after: $cursor) {
       pageInfo {
@@ -23,4 +23,21 @@ const getAllPeople = () => gql`
   }
 `;
 
-export default getAllPeople;
+const GET_PERSON = gql`
+  query ($id: ID) {
+    person(id: $id) {
+      eyeColor
+      hairColor
+      skinColor
+      birthYear
+      vehicleConnection {
+        vehicles {
+          id
+          name
+        }
+      }
+    }
+  }
+`;
+
+export { GET_ALL_PEOPLE, GET_PERSON };

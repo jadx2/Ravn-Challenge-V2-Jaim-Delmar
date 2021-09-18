@@ -1,9 +1,9 @@
 import { useQuery } from '@apollo/client';
-import getAllPeople from '../client/queries';
+import { GET_ALL_PEOPLE } from '../client/queries';
 import CharacterBtn from '../components/CharacterBtn';
 
 const Sidebar = () => {
-  const { loading, error, data } = useQuery(getAllPeople(), {
+  const { loading, error, data } = useQuery(GET_ALL_PEOPLE, {
     variables: {
       first: 5,
       cursor: null,
@@ -17,11 +17,11 @@ const Sidebar = () => {
   const allPeople = data.allPeople.edges;
 
   return (
-    <ul>
+    <aside>
       {allPeople.map((person) => (
-        <CharacterBtn key={person.node.id} name={person.node.name} />
+        <CharacterBtn key={person.node.id} id={person.node.id} name={person.node.name} />
       ))}
-    </ul>
+    </aside>
   );
 };
 
