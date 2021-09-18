@@ -1,9 +1,15 @@
 import { useQuery } from '@apollo/client';
-import allPeopleQuery from '../client/queries';
+import getAllPeople from '../client/queries';
 import CharacterBtn from '../components/CharacterBtn';
 
 const Sidebar = () => {
-  const { loading, error, data } = useQuery(allPeopleQuery());
+  const { loading, error, data } = useQuery(getAllPeople(), {
+    variables: {
+      first: 5,
+      cursor: null,
+    },
+    notifyOnNetworkStatusChange: true,
+  });
 
   if (loading) return <p>Loding...</p>;
   if (error) return <p>{error.message}</p>;

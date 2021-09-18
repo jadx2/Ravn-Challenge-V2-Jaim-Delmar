@@ -1,8 +1,12 @@
 import { gql } from '@apollo/client';
 
-const allPeopleQuery = () => gql`
-  query {
-    allPeople {
+const getAllPeople = () => gql`
+  query ($first: Int, $cursor: String) {
+    allPeople(first: $first, after: $cursor) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
       edges {
         node {
           id
@@ -19,4 +23,4 @@ const allPeopleQuery = () => gql`
   }
 `;
 
-export default allPeopleQuery;
+export default getAllPeople;
