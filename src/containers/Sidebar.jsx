@@ -18,7 +18,7 @@ const Sidebar = () => {
   useEffect(() => {
     const options = {
       root: document.querySelector('#list'),
-      threshold: 0.1,
+      threshold: 0.5,
     };
     observerRef.current = new IntersectionObserver((entries) => {
       const entry = entries[0];
@@ -38,8 +38,8 @@ const Sidebar = () => {
   if (error) return <p>Failed to Load Data</p>;
 
   const allPeople = data.allPeople.edges;
-  const { endCursor, hasNextPage } = data.allPeople.pageInfo;
-  const isLoading = networkStatus === 7;
+  const { endCursor } = data.allPeople.pageInfo;
+  const isLoading = networkStatus === 1;
 
   return (
     <aside>
@@ -48,21 +48,19 @@ const Sidebar = () => {
           <ListButton key={node.id} id={node.id} name={node.name} />
         ))}
       </ul>
-      {hasNextPage && (
-        <button
-          id="load-more"
-          type="button"
-          ref={setButtonRef}
-          onClick={(e) => {
-            e.preventDefault();
-            fetchMore({
-              variables: { after: endCursor },
-            });
-          }}
-        >
-          {isLoading ? <p>Loading...</p> : ''}
-        </button>
-      )}
+      <button
+        id="load-more"
+        type="button"
+        ref={setButtonRef}
+        onClick={(e) => {
+          e.preventDefault();
+          fetchMore({
+            variables: { after: endCursor },
+          });
+        }}
+      >
+        {isLoading ? 'Loading...' : 'More'}
+      </button>
     </aside>
   );
 };

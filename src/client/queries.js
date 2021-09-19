@@ -4,7 +4,6 @@ const GET_ALL_PEOPLE = gql`
   query getAllPeople($after: String) {
     allPeople(first: 5, after: $after) {
       pageInfo {
-        hasNextPage
         endCursor
       }
       edges {
