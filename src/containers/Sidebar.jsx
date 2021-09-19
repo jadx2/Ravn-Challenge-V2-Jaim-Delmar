@@ -10,7 +10,6 @@ const Sidebar = () => {
     variables: {
       cursor: null,
     },
-    // notifyOnNetworkStatusChange: true,
   });
 
   const observerRef = useRef(null);
@@ -39,8 +38,8 @@ const Sidebar = () => {
   if (error) return <p>Failed to Load Data</p>;
 
   const allPeople = data.allPeople.edges;
-  const isRefetching = networkStatus === 3;
   const { endCursor, hasNextPage } = data.allPeople.pageInfo;
+  const isLoading = networkStatus === 7;
 
   return (
     <aside>
@@ -54,7 +53,6 @@ const Sidebar = () => {
           id="load-more"
           type="button"
           ref={setButtonRef}
-          disabled={isRefetching}
           onClick={(e) => {
             e.preventDefault();
             fetchMore({
@@ -62,7 +60,7 @@ const Sidebar = () => {
             });
           }}
         >
-          More
+          {isLoading ? <p>Loading...</p> : ''}
         </button>
       )}
     </aside>
