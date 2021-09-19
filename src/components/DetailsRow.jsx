@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import capitalizeWord from '../helpers/capitalizeHelper';
 
 const GeneralInfoRows = (props) => {
   const {
@@ -9,15 +10,15 @@ const GeneralInfoRows = (props) => {
     <ul className="details-list">
       <li className="details-item">
         <p className="detail">Eye Color</p>
-        <p>{eyeColor}</p>
+        <p>{capitalizeWord(eyeColor)}</p>
       </li>
       <li className="details-item">
         <p className="detail">Hair Color</p>
-        <p>{hairColor}</p>
+        <p>{capitalizeWord(hairColor)}</p>
       </li>
       <li className="details-item">
         <p className="detail">Skin Color</p>
-        <p>{skinColor}</p>
+        <p>{capitalizeWord(skinColor)}</p>
       </li>
       <li className="details-item">
         <p className="detail">Birth Year</p>
