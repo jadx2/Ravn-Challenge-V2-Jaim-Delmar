@@ -6,12 +6,14 @@ import './assets/styles/App.scss';
 
 const App = () => (
   <Router>
-    <Header />
     <div className="container">
-      <Sidebar />
-      <Switch>
-        <Route path="/person/:id" component={DetailsSection} />
-      </Switch>
+      <Header />
+      <main className="main">
+        <Sidebar />
+        <Switch>
+          <Route path="/person/:id" component={DetailsSection} />
+        </Switch>
+      </main>
     </div>
   </Router>
 );

@@ -13,6 +13,7 @@ html {
 
 body {
   font-size: $font-size-normal;
+  background-color: $text-light; 
 }
 
 h1 {
@@ -31,5 +32,16 @@ h2 {
 }
 
 .container {
+  width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  background-color: $white;
+}
+
+.main {
   display: flex;
+}
+
+li {
+  list-style: none;
 }
