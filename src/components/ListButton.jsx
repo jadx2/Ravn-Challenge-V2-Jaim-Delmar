@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 
-const CharacterBtn = (props) => {
+const ListButton = (props) => {
   const { id, name } = props;
   const location = `/person/${id}`;
 
@@ -15,9 +15,9 @@ const CharacterBtn = (props) => {
   );
 };
 
-CharacterBtn.propTypes = {
+ListButton.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };
 
-export default CharacterBtn;
+export default ListButton;

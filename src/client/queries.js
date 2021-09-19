@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 const GET_ALL_PEOPLE = gql`
-  query ($first: Int, $after: String) {
-    allPeople(first: $first, after: $after) {
+  query getAllPeople($after: String) {
+    allPeople(first: 5, after: $after) {
       pageInfo {
         hasNextPage
         endCursor
@@ -24,7 +24,7 @@ const GET_ALL_PEOPLE = gql`
 `;
 
 const GET_PERSON = gql`
-  query ($id: ID) {
+  query getPerson($id: ID) {
     person(id: $id) {
       eyeColor
       hairColor
