@@ -1,6 +1,6 @@
 # Ravn Challenge V2
 
-> This app is for Star Wars lovers that want to know more about their favorite characters. It was built in React using GraphQL and Apollo to fetch and control the flow of data retrieved.
+> This app is for Star Wars lovers that want to know more about their favorite characters. It was built in React using GraphQL and Apollo to fetch and control the flow of data retrieved.It is built for screen over 1440px and features an infinite scroll in the sidebar.
 
 ![screenshot](./src/assets/images/screenshot.png)
 
