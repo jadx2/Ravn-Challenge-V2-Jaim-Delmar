@@ -13,10 +13,12 @@ This project was built using the following technologies:
 - ReactJS
 - React-Router-Dom
 - Prop-Types
-- Apollo
+- Apollo/Client
 - GraphQL
 - React-Waypoint
 - FontAwesome
+- Eslint
+- Stylelint
 
 ## Getting Started
 
