@@ -1,66 +1,47 @@
 import { useQuery } from '@apollo/client';
-import { useRef, useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { Waypoint } from 'react-waypoint';
 import { GET_ALL_PEOPLE } from '../client/queries';
 import ListButton from '../components/ListButton';
 
 const Sidebar = () => {
   const {
-    loading, error, data, fetchMore, networkStatus,
+    loading, error, data, fetchMore,
   } = useQuery(GET_ALL_PEOPLE, {
     variables: {
-      cursor: null,
+      after: null,
     },
+    // notifyOnNetworkStatusChange: true,
   });
 
-  const observerRef = useRef(null);
-  const [buttonRef, setButtonRef] = useState(null);
-
   useEffect(() => {
-    const options = {
-      root: document.querySelector('#list'),
-      threshold: 0.5,
-    };
-    observerRef.current = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      if (entry.isIntersecting) {
-        entry.target.click();
-      }
-    }, options);
+    console.log(loading);
   }, []);
 
-  useEffect(() => {
-    if (buttonRef) {
-      observerRef.current.observe(document.querySelector('#load-more'));
-    }
-  }, [buttonRef]);
-
-  if (loading) return <p>Loding...</p>;
+  if (loading) return <p>Loading...</p>;
   if (error) return <p>Failed to Load Data</p>;
 
   const allPeople = data.allPeople.edges;
   const { endCursor } = data.allPeople.pageInfo;
-  const isLoading = networkStatus === 1;
+  console.log(loading);
 
   return (
     <aside>
       <ul id="list">
-        {allPeople.map(({ node }) => (
-          <ListButton key={node.id} id={node.id} name={node.name} />
+        {allPeople.map(({ node }, i) => (
+          <li key={node.id}>
+            <ListButton id={node.id} name={node.name} />
+            {i === allPeople.length - 1 && (
+              <Waypoint
+                onEnter={() => fetchMore({
+                  variables: { after: endCursor },
+                })}
+              />
+            )}
+          </li>
         ))}
+        {loading && <p>Loading...</p>}
       </ul>
-      <button
-        id="load-more"
-        type="button"
-        ref={setButtonRef}
-        onClick={(e) => {
-          e.preventDefault();
-          fetchMore({
-            variables: { after: endCursor },
-          });
-        }}
-      >
-        {isLoading ? 'Loading...' : 'More'}
-      </button>
     </aside>
   );
 };
