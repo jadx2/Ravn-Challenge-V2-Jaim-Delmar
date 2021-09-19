@@ -19,24 +19,23 @@ const DetailsSection = () => {
   const { vehicles } = person.vehicleConnection;
 
   return (
-    <div>
-      <h2>General Information</h2>
+    <section className="details-section">
+      <h2 className="details-subtitle">General Information</h2>
       <GeneralInfoRows
         eyeColor={person.eyeColor}
         hairColor={person.hairColor}
         skinColor={person.skinColor}
         birthYear={person.birthYear}
       />
-      <h2>Vehicles</h2>
-      <ul>
+      <h2 className="details-subtitle">Vehicles</h2>
+      <ul className="details-list">
         {vehicles.length >= 1 ? (
           vehicles.map((vehicle) => <VehiclesInfoRow key={vehicle.id} name={vehicle.name} />)
         ) : (
           <p>None</p>
         )}
       </ul>
-      <Loader />
-    </div>
+    </section>
   );
 };
 

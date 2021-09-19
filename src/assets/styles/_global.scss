@@ -52,17 +52,9 @@ li {
   color: $text-light;
 }
 
-.error,
-.loading {
+.error {
+  color: $text-emphasis;
   font-weight: 700;
   text-align: center;
   padding-top: 16px;
-}
-
-.error {
-  color: $text-emphasis;
-}
-
-.loading {
-  color: $text-light;
 }

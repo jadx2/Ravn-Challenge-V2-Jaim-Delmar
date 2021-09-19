@@ -6,7 +6,7 @@ const GeneralInfoRows = (props) => {
   } = props;
 
   return (
-    <ul>
+    <ul className="details-list">
       <li>
         <p>Eye Color</p>
         <p>{eyeColor}</p>
@@ -30,7 +30,11 @@ const GeneralInfoRows = (props) => {
 const VehiclesInfoRow = (props) => {
   const { name } = props;
 
-  return <li>{name}</li>;
+  return (
+    <li>
+      <p>{name}</p>
+    </li>
+  );
 };
 
 GeneralInfoRows.propTypes = {
