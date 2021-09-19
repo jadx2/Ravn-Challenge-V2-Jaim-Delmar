@@ -6,14 +6,15 @@ import Loader from '../components/Loader';
 
 const Sidebar = () => {
   const {
-    loading, error, data, fetchMore,
+    loading, error, data, fetchMore, networkStatus,
   } = useQuery(GET_ALL_PEOPLE, {
     variables: {
       after: null,
     },
+    notifyOnNetworkStatusChange: true,
   });
 
-  if (loading) {
+  if (loading && !data) {
     return (
       <aside className="sidebar">
         <Loader />
@@ -31,6 +32,7 @@ const Sidebar = () => {
 
   const allPeople = data.allPeople.edges;
   const { endCursor } = data.allPeople.pageInfo;
+
   return (
     <aside className="sidebar">
       <ul className="sidebar-links">
@@ -51,6 +53,7 @@ const Sidebar = () => {
             )}
           </li>
         ))}
+        {networkStatus === 3 && <Loader />}
       </ul>
     </aside>
   );
