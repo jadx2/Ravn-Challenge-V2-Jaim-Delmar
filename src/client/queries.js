@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 const GET_ALL_PEOPLE = gql`
-  query ($first: Int, $cursor: String) {
-    allPeople(first: $first, after: $cursor) {
+  query ($first: Int, $after: String) {
+    allPeople(first: $first, after: $after) {
       pageInfo {
         hasNextPage
         endCursor

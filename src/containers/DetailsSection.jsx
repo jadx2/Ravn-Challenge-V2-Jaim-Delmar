@@ -12,7 +12,7 @@ const DetailsSection = () => {
   });
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error.message}</p>;
+  if (error) return <p>Failed to Load Data</p>;
 
   const { person } = data;
   const { vehicles } = person.vehicleConnection;
