@@ -1,5 +1,4 @@
 import { useQuery } from '@apollo/client';
-import { useEffect } from 'react';
 import { Waypoint } from 'react-waypoint';
 import { GET_ALL_PEOPLE } from '../client/queries';
 import ListButton from '../components/ListButton';
@@ -11,19 +10,13 @@ const Sidebar = () => {
     variables: {
       after: null,
     },
-    // notifyOnNetworkStatusChange: true,
   });
-
-  useEffect(() => {
-    console.log(loading);
-  }, []);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Failed to Load Data</p>;
 
   const allPeople = data.allPeople.edges;
   const { endCursor } = data.allPeople.pageInfo;
-  console.log(loading);
 
   return (
     <aside>
@@ -40,7 +33,6 @@ const Sidebar = () => {
             )}
           </li>
         ))}
-        {loading && <p>Loading...</p>}
       </ul>
     </aside>
   );
