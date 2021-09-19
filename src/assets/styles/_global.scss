@@ -1,0 +1,35 @@
+@import 'variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  font-family: sans-serif;
+}
+
+body {
+  font-size: $font-size-normal;
+}
+
+h1 {
+  font-size: $font-size-normal;
+  color: $white;
+}
+
+a {
+  text-decoration: none;
+  color: $text-dark;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: $font-size-normal;
+}
+
+.container {
+  display: flex;
+}

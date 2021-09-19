@@ -19,14 +19,14 @@ const DetailsSection = () => {
 
   return (
     <div>
-      <h1>General Information</h1>
+      <h2>General Information</h2>
       <GeneralInfoRows
         eyeColor={person.eyeColor}
         hairColor={person.hairColor}
         skinColor={person.skinColor}
         birthYear={person.birthYear}
       />
-      <h1>Vehicles</h1>
+      <h2>Vehicles</h2>
       <ul>
         {vehicles.length >= 1 ? (
           vehicles.map((vehicle) => <VehiclesInfoRow key={vehicle.id} name={vehicle.name} />)
