@@ -1,0 +1,29 @@
+@import 'variables';
+
+.sidebar {
+  width: 350px;
+  height: 100vh;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+
+  .sidebar-links {
+    padding-left: 14.93px;
+    li {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+      .sidebar-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .character {
+          padding: 16px 0;
+        }
+
+        svg {
+          font-size: $font-size-small;
+          margin-right: 3rem;
+        }
+      }
+    }
+  }
+}

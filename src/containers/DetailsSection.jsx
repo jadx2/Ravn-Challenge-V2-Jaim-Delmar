@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { GET_PERSON } from '../client/queries';
 import { GeneralInfoRows, VehiclesInfoRow } from '../components/DetailsRow';
+import Loader from '../components/Loader';
 
 const DetailsSection = () => {
   const { id } = useParams();
@@ -11,8 +12,8 @@ const DetailsSection = () => {
     },
   });
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Failed to Load Data</p>;
+  if (loading) return <Loader />;
+  if (error) return <p className="error">Failed to Load Data</p>;
 
   const { person } = data;
   const { vehicles } = person.vehicleConnection;
@@ -34,6 +35,7 @@ const DetailsSection = () => {
           <p>None</p>
         )}
       </ul>
+      <Loader />
     </div>
   );
 };
