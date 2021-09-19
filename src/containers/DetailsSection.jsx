@@ -12,7 +12,13 @@ const DetailsSection = () => {
     },
   });
 
-  if (loading) return <Loader />;
+  if (loading) {
+    return (
+      <section className="details-section">
+        <Loader />
+      </section>
+    );
+  }
   if (error) return <p className="error">Failed to Load Data</p>;
 
   const { person } = data;
@@ -32,7 +38,9 @@ const DetailsSection = () => {
         {vehicles.length >= 1 ? (
           vehicles.map((vehicle) => <VehiclesInfoRow key={vehicle.id} name={vehicle.name} />)
         ) : (
-          <p>None</p>
+          <li className="details-item">
+            <p className="detail">None</p>
+          </li>
         )}
       </ul>
     </section>

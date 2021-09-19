@@ -4,11 +4,25 @@
   width: 890px;
   margin: 0 auto;
 
-  p {
-    font-weight: 700;
-  }
-
   .details-subtitle {
     padding: 32px 0 8px 0;
+  }
+
+  .details-list {
+
+    .details-item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 14px 0;
+
+      p {
+        font-weight: 700;
+      }
+
+      .detail {
+        color: $text-light;
+      }
+    }
   }
 }
