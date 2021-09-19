@@ -9,11 +9,14 @@
 html {
   font-size: 10px;
   font-family: sans-serif;
+  height: 100%;
 }
 
 body {
   font-size: $font-size-normal;
   background-color: $text-light;
+  height: 100%;
+  overflow: hidden;
 }
 
 h1,
@@ -34,7 +37,6 @@ a {
 
 .container {
   width: 1440px;
-  height: 100vh;
   margin: 0 auto;
   background-color: $white;
 }
